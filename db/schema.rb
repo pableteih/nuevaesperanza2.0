@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_08_164909) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_165726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "lastName"
+    t.string "phone"
+    t.string "email"
+    t.bigint "locality_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locality_id"], name: "index_clients_on_locality_id"
+  end
 
   create_table "compositions", force: :cascade do |t|
     t.string "name"
@@ -20,10 +31,48 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_164909) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "lastName"
+    t.string "phone"
+    t.string "email"
+    t.text "content"
+    t.bigint "locality_id", null: false
+    t.bigint "publication_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locality_id"], name: "index_contacts_on_locality_id"
+    t.index ["publication_id"], name: "index_contacts_on_publication_id"
+  end
+
   create_table "localities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "type_id", null: false
+    t.bigint "composition_id", null: false
+    t.bigint "locality_id", null: false
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_products_on_client_id"
+    t.index ["composition_id"], name: "index_products_on_composition_id"
+    t.index ["locality_id"], name: "index_products_on_locality_id"
+    t.index ["type_id"], name: "index_products_on_type_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.text "description"
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_publications_on_product_id"
+    t.index ["user_id"], name: "index_publications_on_user_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -44,4 +93,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_164909) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clients", "localities"
+  add_foreign_key "contacts", "localities"
+  add_foreign_key "contacts", "publications"
+  add_foreign_key "products", "clients"
+  add_foreign_key "products", "compositions"
+  add_foreign_key "products", "localities"
+  add_foreign_key "products", "types"
+  add_foreign_key "publications", "products"
+  add_foreign_key "publications", "users"
 end
