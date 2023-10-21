@@ -55,4 +55,5 @@ comunas.each do |comunas|
     Locality.create(name: comunas)
 end
 
-User.create(email: "admin@gmail.com", password: "123456")
+User.create(email: "admin@gmail.com", password: "123456", name: "Pablo", surname: "Igor", role: 1)
+User.create(email: "pablo@gmail.com", password: "123456", name: "pablete", surname: "Igors", role: 0)

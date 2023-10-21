@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin
 
   # GET /products or /products.json
   def index
@@ -13,6 +14,10 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @type = Type.all
+    @composition = Composition.all
+    @locality = Locality.all
+    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] }
   end
 
   # GET /products/1/edit

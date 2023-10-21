@@ -1,5 +1,6 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin, only: %i[new create edit update destroy]
 
   # GET /publications or /publications.json
   def index
@@ -13,6 +14,9 @@ class PublicationsController < ApplicationController
   # GET /publications/new
   def new
     @publication = Publication.new
+    @products = Product.includes(client: [:name, :lastName]).order(created_at: :desc)
+    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] } 
+
   end
 
   # GET /publications/1/edit
@@ -22,6 +26,7 @@ class PublicationsController < ApplicationController
   # POST /publications or /publications.json
   def create
     @publication = Publication.new(publication_params)
+    @publication.user_id = current_user.id
 
     respond_to do |format|
       if @publication.save

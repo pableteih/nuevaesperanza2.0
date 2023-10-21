@@ -17,14 +17,14 @@
   </div>
 
   <div>
-    <%= form.label :product_id, style: "display: block" %>
-    <%= form.text_field :product_id %>
-  </div>
+  <%= form.label :product_id, style: "display: block" %>
+  <%= form.collection_select :product_id, @products, :id, lambda { |product| "#{product.client.name} #{product.client.lastName}" }, prompt: "Selecciona un producto" %>
+</div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+<div>
+  <%= form.label :user_id, style: "display: block" %>
+  <%= form.collection_select :user_id, @clients, :second, :first, prompt: "Cliente" %>
+</div>
 
   <div>
     <%= form.submit %>
