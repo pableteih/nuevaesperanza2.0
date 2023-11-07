@@ -2,20 +2,25 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[ show edit update destroy ]
   before_action :authenticate_admin, only: %i[new create edit update destroy]
 
+  include Pagy::Backend
+
   # GET /publications or /publications.json
   def index
     @publications = Publication.all
+    @pagy, @publications = pagy(Publication.order(created_at: :desc), items: 12)
   end
 
   # GET /publications/1 or /publications/1.json
   def show
+    @publication = Publication.find(params[:id])
+    @contact = Contact.new # Esto inicializa un nuevo objeto Contact vacío para el formulario
   end
 
   # GET /publications/new
   def new
     @publication = Publication.new
-    @products = Product.includes(client: [:name, :lastName]).order(created_at: :desc)
-    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] } 
+    @products = Product.includes(:client).order(created_at: :desc)
+    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] }
 
   end
 
@@ -70,6 +75,6 @@ class PublicationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def publication_params
-      params.require(:publication).permit(:description, :product_id, :user_id)
+      params.require(:publication).permit(:description, :product_id, :user_id, images: [])
     end
 end

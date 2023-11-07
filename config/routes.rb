@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contacts
+  resources :contacts, only: [:new, :create, :index, :show]
   resources :publications
   resources :products
   resources :clients

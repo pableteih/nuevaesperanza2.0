@@ -11,6 +11,11 @@
 </div>
 <% end %>
 
+<div class="field">
+  <%= form.label :files, 'Archivos Adjuntos' %>
+  <%= form.file_field :files, multiple: true %>
+</div>
+
 <div>
   <%= form.label :Cantidad, style: "display: block" %>
   <%= form.number_field :quantity %>

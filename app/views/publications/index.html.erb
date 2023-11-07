@@ -1,14 +1,57 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Publications</h1>
+<%if user_signed_in? && current_user.role == "admin"%>
+<%= link_to "New publication", new_publication_path %>
+<%end%>
 
-<div id="publications">
+<h1>Últimos productos</h1>
+
+<div class="row">
   <% @publications.each do |publication| %>
-    <%= render publication %>
-    <p>
-      <%= link_to "Show this publication", publication %>
-    </p>
+  <div class="col-md-4">
+    <div class="publication-card">
+      <div id="imageCarousel<%= publication.id %>" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% if publication.images.attached? %>
+          <% publication.images.each_with_index do |image, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <%= image_tag image, style: "width: 900px; height: 500px; display: block; margin: 0 auto;" %>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#imageCarousel<%= publication.id %>" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#imageCarousel<%= publication.id %>" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </div>
+
+      <p>
+        <%= publication.description %>
+      </p>
+
+      <p>
+        <strong>Tipo:</strong>
+        <%= publication.product.type.name %>
+      </p>
+      <p>
+        <strong>Composición:</strong>
+        <%= publication.product.composition.name %>
+      </p>
+
+      <p>
+        <strong>Localidad</strong>
+        <%= publication.product.client.locality.name %>
+      </p>
+      <p>
+        <%= link_to "Ver producto", publication %>
+      </p>
+    </div>
+  </div>
   <% end %>
 </div>
-
-<%= link_to "New publication", new_publication_path %>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>

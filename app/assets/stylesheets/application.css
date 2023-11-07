@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .publication-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    /* Ajusta el tamaño deseado para la tarjeta */
+    width: 300px;
+  }
+  
+  .publication-card img {
+    max-width: 200px; /* Ancho máximo deseado para la imagen */
+    max-height: 150px; /* Alto máximo deseado para la imagen */
+    width: auto; /* Esto garantiza que la imagen se ajuste proporcionalmente */
+    height: auto; /* Esto garantiza que la imagen se ajuste proporcionalmente */
+  }
+/* styles.css o tu archivo CSS personalizado */
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Alto deseado */
+  }
+  
+  .carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain; /* Opcional: ajusta la imagen para que quepa completamente */
+  }
+
+  .carousel-item.custom-carousel-item {
+    height: 500px; /* Altura deseada */
+    width: 900px; /* Anchura deseada */
+    align-items: center;
+  }
+  

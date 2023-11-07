@@ -77,3 +77,4 @@ gem "activestorage"
 
 gem "figaro"
 
+gem "pagy"

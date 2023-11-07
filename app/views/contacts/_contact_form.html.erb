@@ -1,0 +1,32 @@
+<%= form_with(model: @contact, url: contacts_path, method: :post, class: "needs-validation", novalidate: true) do |form| %>
+  <%= form.hidden_field :publication_id, value: @publication.id if @publication.present? %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Nombre completo", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :Localidad, class: "form-label" %>
+    <%= form.collection_select :locality_id, Locality.all, :id, :name, { prompt: "Selecciona una localidad" }, class: "form-select", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control", placeholder: "correo@ejemplo.com", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :Teléfono, class: "form-label" %>
+    <%= form.text_field :phone, class: "form-control", placeholder: "+569 - 7634 5169" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :Mensaje, class: "form-label" %>
+    <%= form.text_area :content, rows: 5, class: "form-control", placeholder: "Escribe tu mensaje aquí...", required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit "Enviar", class: "btn btn-primary" %>
+  </div>
+<% end %>
