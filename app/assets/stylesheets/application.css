@@ -49,4 +49,17 @@
     width: 900px; /* Anchura deseada */
     align-items: center;
   }
+
+  .sell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    gap: 30px;
+    background-image: url('/assets/silo1.jpg');
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el div */
+
+  }
   
