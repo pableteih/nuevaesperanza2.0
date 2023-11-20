@@ -1,69 +1,81 @@
-<p style="color: green"><%= notice %></p>
 
-<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <% if @publication.images.attached? %>
-    <% @publication.images.each_with_index do |image, index| %>
-    <div class="carousel-item custom-carousel-item <%= 'active' if index == 0 %>">
-      <%= image_tag image, style: "display: block; margin: 0 auto;" %>
+  <div class="container">
+  <div class="col-sm-12">
+    <p style="color: green"><%= notice %></p>
+    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% if @publication.images.attached? %>
+        <% @publication.images.each_with_index do |image, index| %>
+        <div class="carousel-item custom-carousel-item <%= 'active' if index == 0 %>">
+          <%= image_tag image, class: "d-block w-100 img-fluid" %>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
     </div>
-    <% end %>
-    <% end %>
-  </div>
-  <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
-<br />
+    <br />
 
-<div class="card">
-  <table class="table">
-    <tbody>
-      <tr>
-        <th scope="row">Descripción</th>
-        <td><%= @publication.description %></td>
-      </tr>
-      <tr>
-        <th scope="row">Tipo</th>
-        <td><%= @publication.product.type.name %></td>
-      </tr>
-      <tr>
-        <th scope="row">Composición</th>
-        <td><%= @publication.product.composition.name %></td>
-      </tr>
-      <tr>
-        <th scope="row">Localidad</th>
-        <td><%= @publication.product.client.locality.name %></td>
-      </tr>
-      <tr>
-        <th scope="row">Informe</th>
-        <td>
-          <ul class="list-unstyled">
-            <% if @publication.product.files.any? %>
-            <ul class="list-unstyled">
-              <% @publication.product.files.each do |file| %>
-              <li>
-                <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
-              </li>
-              <% end %>
-            </ul>
-            <% else %>
-            <p>No hay informe disponible.</p>
-            <% end %>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="card">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Descripción</th>
+            <td><%= @publication.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">Tipo</th>
+            <td><%= @publication.product.type.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Composición</th>
+            <td><%= @publication.product.composition.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Localidad</th>
+            <td><%= @publication.product.client.locality.name %></td>
+          </tr>          <tr>
+            <th scope="row">Cantidad</th>
+            <td><%= @publication.product.quantity %> </td>
+          </tr>
+          <tr>
+            <th scope="row">Informe</th>
+            <td>
+              <ul class="list-unstyled">
+                <% if @publication.product.files.any? %>
+                <ul class="list-unstyled">
+                  <% @publication.product.files.each do |file| %>
+                  <li>
+                    <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+                  </li>
+                  <% end %>
+                </ul>
+                <% else %>
+                <p>No hay informe disponible.</p>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <%if user_signed_in? && current_user.role == "admin"%>
+    <%= link_to "Edit this publication", edit_publication_path(@publication) %> |
+    <%= link_to "Back to publications", publications_path %>
+    <%= button_to "Destroy this publication", @publication, method: :delete, class: "my-custom-button" %>
+    <%end%>
+    <hr>
+    <br />
+    <h2>Cotiza</h2>
+    <p>Uno de nuestros ejecutivos se contactará usted </p>
+    <%= render 'contacts/contact_form', contact: Contact.new(publication_id: @publication.id) %>
+
+  </div>
 </div>
-<%if user_signed_in? && current_user.role == "admin"%>
-<%= link_to "Edit this publication", edit_publication_path(@publication) %> |
-<%= link_to "Back to publications", publications_path %>
-<%= button_to "Destroy this publication", @publication, method: :delete, class: "my-custom-button" %>
-<%end%>
-<%= render 'contacts/contact_form', contact: Contact.new(publication_id: @publication.id) %>

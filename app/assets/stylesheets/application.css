@@ -1,65 +1,130 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* ... tus otros estilos ... */
 
+/* Mejoras en .publication-card para responsividad */
+.publication-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  /* Se eliminará el ancho fijo para responsividad */
+}
 
- .publication-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-    /* Ajusta el tamaño deseado para la tarjeta */
-    width: 300px;
-  }
-  
-  .publication-card img {
-    max-width: 200px; /* Ancho máximo deseado para la imagen */
-    max-height: 150px; /* Alto máximo deseado para la imagen */
-    width: auto; /* Esto garantiza que la imagen se ajuste proporcionalmente */
-    height: auto; /* Esto garantiza que la imagen se ajuste proporcionalmente */
-  }
-/* styles.css o tu archivo CSS personalizado */
+.publication-card img {
+  max-width: 200px; /* Ancho máximo deseado para la imagen */
+  max-height: 150px; /* Alto máximo deseado para la imagen */
+  width: auto; /* Esto garantiza que la imagen se ajuste proporcionalmente */
+  height: auto; /* Esto garantiza que la imagen se ajuste proporcionalmente */
+}
+/* Ajustes para el carrusel */
 .carousel-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px; /* Alto deseado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Elimina la altura fija para que el contenedor del carrusel se ajuste al contenido */
+  height: auto;
+}
+
+.carousel-item img {
+  /* La imagen ocupa el ancho completo y su altura es auto para mantener la relación de aspecto */
+  max-width: 100%;
+  height: auto;
+  object-fit: cover; /* 'cover' asegurará que la imagen cubra completamente el área del carrusel */
+}
+
+/* Ajustes para responsividad */
+@media (max-width: 768px) {
+  .carousel-item {
+    /* Aquí puedes ajustar la altura del carrusel para dispositivos móviles si es necesario */
+    height: auto;
   }
-  
   .carousel-item img {
-    max-width: 100%;
-    max-height: 100%;
-
-    object-fit: contain; /* Opcional: ajusta la imagen para que quepa completamente */
+    /* Ajustes para las imágenes en dispositivos móviles */
+    object-fit: contain; /* O 'cover', dependiendo de cómo quieras que se muestren las imágenes */
   }
+}
 
-  .carousel-item.custom-carousel-item {
-    height: 500px; /* Altura deseada */
-    width: 900px; /* Anchura deseada */
-    align-items: center;
-  }
+/* Ajustes para la sección 'Vende con Nosotros' */
+.sell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Utiliza padding en lugar de height para controlar el tamaño */
+  padding: 30px 0; /* 30px de relleno superior e inferior, ajusta según sea necesario */
+  background-image: url('/assets/silo1.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-top: 0;
+  position: relative;
+}
 
-  .sell {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    gap: 30px;
-    background-image: url('/assets/silo1.jpg');
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center; /* Centra la imagen en el div */
+/* Overlay oscuro para mejorar la legibilidad del texto */
+.sell:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(118, 123, 122, 0.5); /* Ajusta el color y la opacidad */
+  z-index: 1;
+}
 
-  }
-  
+
+/* Ajustes para el navbar con gradiente */
+.mi-navbar {
+  margin-bottom: 0;
+  background: linear-gradient(to bottom, #cccccc95, #56625f);
+  /* Resto de tus estilos del navbar */
+}
+
+/* Ajustes para el footer con gradiente */
+.custom-foot {
+  margin-bottom: 0;
+  background: linear-gradient(to bottom, #cccccc95, #56625f);
+  /* Resto de tus estilos del footer */
+}
+
+/* Overlay Oscuro */
+.background-image-overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5); /* Ajusta la transparencia según necesites */
+}
+
+.background-image-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: -1;
+}
+
+/* Texto con Sombra */
+.text-with-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ajusta los valores y colores según necesites */
+  color: white; /* O el color que mejor contraste con tu overlay */
+}
+
+.notice, .alert {
+  margin-top: 0; /* Elimina el margen superior */
+}
+
+.yeld{
+  margin-top: 0; /* Elimina el margen superior */
+}
+
+.mi-navbar{
+margin-bottom: 0;
+background: linear-gradient(to bottom, #56625f, #cccccc95);
+
+}
+
+.custom-foot{
+
+  margin-bottom: 0;
+  background: linear-gradient(to bottom, #cccccc95, #56625f);
+}

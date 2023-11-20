@@ -2,7 +2,7 @@
   <%= form.hidden_field :publication_id, value: @publication.id if @publication.present? %>
 
   <div class="mb-3">
-    <%= form.label :name, class: "form-label" %>
+    <%= form.label :Nombre, class: "form-label" %>
     <%= form.text_field :name, class: "form-control", placeholder: "Nombre completo", required: true %>
   </div>
 
@@ -12,7 +12,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :email, class: "form-label" %>
+    <%= form.label :Correo, class: "form-label" %>
     <%= form.email_field :email, class: "form-control", placeholder: "correo@ejemplo.com", required: true %>
   </div>
 
@@ -29,4 +29,5 @@
   <div class="form-actions">
     <%= form.submit "Enviar", class: "btn btn-primary" %>
   </div>
+  <br/>
 <% end %>

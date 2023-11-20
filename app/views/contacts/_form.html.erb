@@ -1,51 +1,48 @@
-<%= form_with(model: contact) do |form| %>
-<% if contact.errors.any? %>
-<div style="color: red">
-  <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<%= form_with(model: contact, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <% if contact.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <ul>
+        <% contact.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <ul>
-    <% contact.errors.each do |error| %>
-    <li><%= error.full_message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+  <div class="mb-3">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= form.label :name, style: "display: block" %>
-  <%= form.text_field :name %>
-</div>
+  <div class="mb-3">
+    <%= form.label :lastName %>
+    <%= form.text_field :lastName, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= form.label :lastName, style: "display: block" %>
-  <%= form.text_field :lastName %>
-</div>
+  <div class="mb-3">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= form.label :phone, style: "display: block" %>
-  <%= form.text_field :phone %>
-</div>
+  <div class="mb-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= form.label :email, style: "display: block" %>
-  <%= form.text_field :email %>
-</div>
+  <div class="mb-3">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= form.label :content, style: "display: block" %>
-  <%= form.text_area :content %>
-</div>
+  <div class="mb-3">
+    <%= form.label :locality_id %>
+    <%= form.collection_select :locality_id, Locality.all, :id, :name, { prompt: "Selecciona una localidad" }, class: "form-select", required: true %>
+  </div>
 
-<div>
-  <%= form.label :locality_id, style: "display: block" %>
-  <%= form.collection_select :locality_id, Locality.all, :id, :name, { prompt: "Selecciona una localidad" }, class: "form-select", required: true %>
-</div>
-
-<div>
   <%= form.hidden_field :publication_id, value: 2 %>
-</div>
 
-<div>
-  <%= form.submit %>
-</div>
+  <div>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
 <% end %>
