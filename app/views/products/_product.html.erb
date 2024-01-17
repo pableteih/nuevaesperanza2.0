@@ -1,27 +1,30 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Quantity:</strong>
-    <%= product.quantity %>
-  </p>
-
-  <p>
-    <strong>Type:</strong>
-    <%= product.type_id %>
-  </p>
-
-  <p>
-    <strong>Composition:</strong>
-    <%= product.composition_id %>
-  </p>
-
-  <p>
-    <strong>Locality:</strong>
-    <%= product.locality_id %>
-  </p>
-
-  <p>
-    <strong>Client:</strong>
-    <%= product.client_id %>
-  </p>
-
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Quantity</td>
+      <td><%= product.quantity %></td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td><%= product.type_id %></td>
+    </tr>
+    <tr>
+      <td>Composition</td>
+      <td><%= product.composition_id %></td>
+    </tr>
+    <tr>
+      <td>Locality</td>
+      <td><%= product.locality_id %></td>
+    </tr>
+    <tr>
+      <td>Client</td>
+      <td><%= product.client_id %></td>
+    </tr>
+  </tbody>
+</table>

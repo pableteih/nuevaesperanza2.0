@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: client) do |form| %>
   <% if client.errors.any? %>
     <div style="color: red">
@@ -11,32 +12,33 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
+  <div class="mb-3">
+    <%= form.label :Nombre, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :lastName, style: "display: block" %>
+  <div class="mb-3">
+    <%= form.label :Apellido, style: "display: block" %>
     <%= form.text_field :lastName %>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
+  <div class="mb-3">
+    <%= form.label :Teléfono, style: "display: block" %>
     <%= form.text_field :phone %>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
+  <div class="mb-3">
+    <%= form.label :Correo, style: "display: block" %>
     <%= form.text_field :email %>
   </div>
 
-  <div>
-    <%= form.label :locality_id, style: "display: block" %>
-    <%= form.collection_select :locality_id, @localities, :id, :name, promp: "Localidad" %>
+  <div class="mb-3">
+    <%= form.label :Localidad, style: "display: block" %>
+    <%= form.collection_select :locality_id, Locality.order(:name), :id, :name, promp: "Localidad" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Crear cliente" ,class: 'btn btn-primary' %>
   </div>
 <% end %>
+</div>

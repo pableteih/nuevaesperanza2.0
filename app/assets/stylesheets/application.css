@@ -128,3 +128,8 @@ background: linear-gradient(to bottom, #56625f, #cccccc95);
   margin-bottom: 0;
   background: linear-gradient(to bottom, #cccccc95, #56625f);
 }
+
+.btn-contact {
+  position: relative;
+  z-index: 2; /* Mayor que el z-index del pseudo-elemento ::before */
+}

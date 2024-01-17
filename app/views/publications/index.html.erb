@@ -3,7 +3,7 @@
 
     <h1 class="text-with-shadow">VENDE CON NOSOTROS</h1>
 
-    <%= link_to "Contactar", new_contact_path	, class:"btn btn-light" %>
+    <%= link_to "Contactar", new_contact_path, class: "btn btn-light btn-contact" %>
 
   </div>
 </div>
@@ -11,7 +11,7 @@
   <p style="color: green"><%= notice %></p>
 
   <%if user_signed_in? && current_user.role == "admin"%>
-  <%= link_to "New publication", new_publication_path %>
+  <%= link_to "Nueva publicación", new_publication_path, class: 'btn btn-primary', style: "margin-bottom: 20px;" %>
   <%end%>
 
   <h1>Últimos productos</h1>
@@ -41,7 +41,7 @@
             <span class="visually-hidden">Next</span>
           </a>
         </div>
-        <br/>
+        <br />
         <p>
           <strong>Tipo:</strong>
           <%= publication.product.type.name %>
@@ -54,6 +54,10 @@
         <p>
           <strong>Localidad</strong>
           <%= publication.product.client.locality.name %>
+        </p>
+        <p>
+          <strong>Cantidad</strong>
+          <%= publication.product.quantity %>
         </p>
         <p>
           <%= link_to "Ver producto", publication, class: "btn btn-outline-secondary" %>

@@ -22,6 +22,11 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @product = Product.new
+    @type = Type.all
+    @composition = Composition.all
+    @locality = Locality.all
+    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] }
   end
 
   # POST /products or /products.json
@@ -41,6 +46,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+    
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }

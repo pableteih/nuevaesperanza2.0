@@ -1,48 +1,48 @@
-<%= form_with(model: contact, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+<div class="container">
+  <%= form_with(model: contact, html: { class: 'needs-validation', novalidate: true }) do |form| %>
   <% if contact.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-      <ul>
-        <% contact.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="alert alert-danger" role="alert">
+    <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+    <ul>
+      <% contact.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :name %>
+    <%= form.label :Nombre %>
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :lastName %>
+    <%= form.label :Apellido %>
     <%= form.text_field :lastName, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :phone %>
+    <%= form.label :Teléfono %>
     <%= form.text_field :phone, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :email %>
+    <%= form.label :Correo %>
     <%= form.text_field :email, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :content %>
+    <%= form.label :Contenido %>
     <%= form.text_area :content, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :locality_id %>
-    <%= form.collection_select :locality_id, Locality.all, :id, :name, { prompt: "Selecciona una localidad" }, class: "form-select", required: true %>
+    <%= form.label :Localidad %>
+    <%= form.collection_select :locality_id, Locality.order(:name), :id, :name, { prompt: "Selecciona una localidad" }, class: "form-select", required: true %>
   </div>
-
-  <%= form.hidden_field :publication_id, value: 2 %>
 
   <div>
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit "Enviar información" , class: 'btn btn-primary', style: "margin-left: 20px; margin-bottom: 20px;" %>
   </div>
-<% end %>
+  <% end %>
+</div>
