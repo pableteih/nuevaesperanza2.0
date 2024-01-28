@@ -1,5 +1,5 @@
 
-  <div class="container">
+  <div class="container pt-3">
   <div class="col-sm-12">
     <p style="color: green"><%= notice %></p>
     <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -66,11 +66,13 @@
         </tbody>
       </table>
     </div>
+    <div class="botons">
     <%if user_signed_in? && current_user.role == "admin"%>
-    <%= link_to "Edit this publication", edit_publication_path(@publication) %> |
-    <%= link_to "Back to publications", publications_path %>
-    <%= button_to "Destroy this publication", @publication, method: :delete, class: "my-custom-button" %>
+    <%= link_to "Editar publicación", edit_publication_path(@publication), class: "btn btn-outline-secondary",style:"margin-top: 10px;" %>
+    <%= button_to "Eliminar", @publication, method: :delete, class: "btn btn-outline-secondary", style: "margin-top: 10px;" %>
     <%end%>
+    <%= link_to "Volver", publications_path, class: "btn btn-outline-secondary", style:"margin-top: 10px;" %>
+    </div>
     <hr>
     <br />
     <h2>Cotiza</h2>

@@ -1,30 +1,38 @@
 <table class="table">
-  <thead>
-    <tr>
-      <th>Attribute</th>
-      <th>Value</th>
-    </tr>
-  </thead>
+
   <tbody>
     <tr>
-      <td>Quantity</td>
+      <td>Archivos adjuntos</td>
+      <td>
+          <% if product.files.any? %>
+            <% product.files.each do |file| %>
+            <li>
+              <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+            </li>
+            <% end %>
+          <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>Cantidad</td>
       <td><%= product.quantity %></td>
     </tr>
     <tr>
-      <td>Type</td>
-      <td><%= product.type_id %></td>
+      <td>Tipo</td>
+      <td><%= product.type.name %></td>
     </tr>
     <tr>
-      <td>Composition</td>
-      <td><%= product.composition_id %></td>
+      <td>Composición</td>
+      <td><%= product.composition.name %></td>
     </tr>
     <tr>
-      <td>Locality</td>
-      <td><%= product.locality_id %></td>
+      <td>Localidad</td>
+      <td><%= product.locality.name %></td>
     </tr>
     <tr>
-      <td>Client</td>
-      <td><%= product.client_id %></td>
+      <td>Cliente</td>
+      <td><%= "#{product.client.name} #{product.client.lastName}" if product.client.name && product.client.lastName%>
+      </td>
     </tr>
   </tbody>
 </table>

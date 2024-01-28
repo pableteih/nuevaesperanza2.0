@@ -1,5 +1,7 @@
 <div class="container">
   <%= form_with(model: contact, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <%= form.hidden_field :publication_id, value: 4 %>
+
   <% if contact.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -42,7 +44,7 @@
   </div>
 
   <div>
-    <%= form.submit "Enviar información" , class: 'btn btn-primary', style: "margin-left: 20px; margin-bottom: 20px;" %>
+    <%= form.submit "Enviar información" , class: "btn btn-outline-secondary", style: " margin-bottom: 10px;" %>
   </div>
   <% end %>
 </div>

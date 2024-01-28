@@ -17,7 +17,7 @@
 
       <tr>
         <td><%= client.id %></td>
-        <td><%= client.name + " " + client.lastName %></td>
+        <td><%= "#{client.name} #{client.lastName}" if client.name && client.lastName %></td>
         <td><%= client.phone %></td>
         <td><%= client.email %></td>
         <td><%= client.locality.name %></td>
@@ -30,4 +30,4 @@
     </table>
 </div>
 
-<%= link_to "Crear cliente", new_client_path, class: 'btn btn-primary', style: "margin-left: 20px; margin-bottom: 20px;" %>
+<%= link_to "Crear cliente", new_client_path, class: "btn btn-outline-secondary", style: "margin-left: 20px; margin-bottom: 20px;" %>

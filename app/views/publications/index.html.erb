@@ -11,7 +11,7 @@
   <p style="color: green"><%= notice %></p>
 
   <%if user_signed_in? && current_user.role == "admin"%>
-  <%= link_to "Nueva publicación", new_publication_path, class: 'btn btn-primary', style: "margin-bottom: 20px;" %>
+  <%= link_to "Nueva publicación", new_publication_path, class: "btn btn-outline-secondary", style: "margin-bottom: 20px;" %>
   <%end%>
 
   <h1>Últimos productos</h1>
@@ -42,23 +42,24 @@
           </a>
         </div>
         <br />
-        <p>
-          <strong>Tipo:</strong>
-          <%= publication.product.type.name %>
-        </p>
-        <p>
-          <strong>Composición:</strong>
-          <%= publication.product.composition.name %>
-        </p>
-
-        <p>
-          <strong>Localidad</strong>
-          <%= publication.product.client.locality.name %>
-        </p>
-        <p>
-          <strong>Cantidad</strong>
-          <%= publication.product.quantity %>
-        </p>
+        <table>
+          <tr>
+            <th>Tipo:</th>
+            <td><%= publication.product.type.name %></td>
+          </tr>
+          <tr>
+            <th>Composición:</th>
+            <td><%= publication.product.composition.name %></td>
+          </tr>
+          <tr>
+            <th>Localidad:</th>
+            <td><%= publication.product.client.locality.name %></td>
+          </tr>
+          <tr>
+            <th>Cantidad:</th>
+            <td><%= publication.product.quantity %></td>
+          </tr>
+        </table>
         <p>
           <%= link_to "Ver producto", publication, class: "btn btn-outline-secondary" %>
         </p>

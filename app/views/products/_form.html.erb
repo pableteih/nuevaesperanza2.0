@@ -23,29 +23,30 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :type_id, style: "display: block" %>
+    <%= form.label :Tipo, style: "display: block" %>
     <%= form.collection_select :type_id, @type, :id, :name, prompt: "Tipo" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :composition_id, style: "display: block" %>
+    <%= form.label :Composición, style: "display: block" %>
     <%= form.collection_select :composition_id, @composition, :id, :name, prompt: "Composición" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :locality_id, style: "display: block" %>
-    <%= form.collection_select :locality_id, @locality, :id, :name, promp: "Localidad" %>
+    <%= form.label :localidad, style: "display: block" %>
+    <%= form.collection_select :locality_id, Locality.order(:name), :id, :name, promp: "Localidad" %>
 
   </div>
 
   <div class="mb-3">
-    <%= form.label :client_id, style: "display: block" %>
+    <%= form.label :Cliente, style: "display: block" %>
+    <%= form.collection_select :client_id, @clients, :second, :first, prompt: "Cliente" %>
   </div>
+  <%= form.submit "Enviar", class: "btn btn-outline-secondary", style: "margin-bottom: 20px; margin-top: 20px;"%>
 
-  <%= form.collection_select :client_id, @clients, :second, :first, prompt: "Cliente" %>
 </div>
 
-<%= form.submit "Crear", class: 'btn btn-primary', style: "margin-left: 20px; margin-bottom: 20px; margin-top: 20px;"%>
+
 </div>
 <% end %>
 </div>

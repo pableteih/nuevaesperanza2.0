@@ -1,27 +1,28 @@
-<div id="<%= dom_id client %>">
-  <p>
-    <strong>Name:</strong>
-    <%= client.name %>
-  </p>
+<div class="container">
+  <div id="<%= dom_id client %>">
 
-  <p>
-    <strong>Lastname:</strong>
-    <%= client.lastName %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= client.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= client.email %>
-  </p>
-
-  <p>
-    <strong>Locality:</strong>
-    <%= client.locality_id %>
-  </p>
-
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Nombre</td>
+          <td><%= client.name %></td>
+        </tr>
+        <tr>
+          <td>Apellido</td>
+          <td><%= client.lastName %></td>
+        </tr>
+        <tr>
+          <td>Teléfono</td>
+          <td><%= client.phone %></td>
+        </tr>
+        <tr>
+          <td>Correo</td>
+          <td><%= client.email %></td>
+        </tr>
+        <tr>
+          <td>Localidad</td>
+          <td><%= client.locality.name %></td>
+        </tr>
+    </table>
+  </div>
 </div>

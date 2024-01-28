@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     @publication = Publication.find(params[:publication_id]) if params[:publication_id].present?
+    puts "Publication ID in new action: #{@publication&.id}"
 
   end
 

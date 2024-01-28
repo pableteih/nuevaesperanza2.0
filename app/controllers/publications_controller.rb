@@ -26,6 +26,9 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1/edit
   def edit
+    @publication = Publication.new
+    @products = Product.includes(:client).order(created_at: :desc)
+    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] }
   end
 
   # POST /publications or /publications.json

@@ -45,6 +45,7 @@
 /* Ajustes para la sección 'Vende con Nosotros' */
 .sell {
   display: flex;
+  height: 320px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -115,6 +116,7 @@
 
 .yeld{
   margin-top: 0; /* Elimina el margen superior */
+  background-color: #cccccc95;
 }
 
 .mi-navbar{
@@ -132,4 +134,26 @@ background: linear-gradient(to bottom, #56625f, #cccccc95);
 .btn-contact {
   position: relative;
   z-index: 2; /* Mayor que el z-index del pseudo-elemento ::before */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px; /* Espacio superior para separar de otros elementos si es necesario */
+}
+
+td, th {
+  padding: 8px;
+  border: 1px solid #ddd; /* Borde de las celdas */
+}
+
+td strong {
+  display: block; /* Hace que los elementos strong se muestren en una nueva línea */
+  margin-bottom: 5px; /* Espacio entre el strong y el siguiente párrafo */
+}
+.botons{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
 }
