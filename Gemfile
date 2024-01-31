@@ -78,3 +78,7 @@ gem "activestorage"
 gem "figaro"
 
 gem "pagy"
+
+gem "ransack"
+
+gem "pg_search"

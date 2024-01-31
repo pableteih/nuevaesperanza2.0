@@ -1,5 +1,4 @@
-
-  <div class="container pt-3">
+<div class="container pt-3" style="color:white;">
   <div class="col-sm-12">
     <p style="color: green"><%= notice %></p>
     <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -23,9 +22,9 @@
     </div>
     <br />
 
-    <div class="card">
+    <div class="card" id="card-show">
       <table class="table">
-        <tbody>
+        <tbody id="table-show">
           <tr>
             <th scope="row">Descripción</th>
             <td><%= @publication.description %></td>
@@ -41,7 +40,8 @@
           <tr>
             <th scope="row">Localidad</th>
             <td><%= @publication.product.client.locality.name %></td>
-          </tr>          <tr>
+          </tr>
+          <tr>
             <th scope="row">Cantidad</th>
             <td><%= @publication.product.quantity %> </td>
           </tr>
@@ -67,16 +67,18 @@
       </table>
     </div>
     <div class="botons">
-    <%if user_signed_in? && current_user.role == "admin"%>
-    <%= link_to "Editar publicación", edit_publication_path(@publication), class: "btn btn-outline-secondary",style:"margin-top: 10px;" %>
-    <%= button_to "Eliminar", @publication, method: :delete, class: "btn btn-outline-secondary", style: "margin-top: 10px;" %>
-    <%end%>
-    <%= link_to "Volver", publications_path, class: "btn btn-outline-secondary", style:"margin-top: 10px;" %>
+      <%if user_signed_in? && current_user.role == "admin"%>
+      <%= link_to "Editar publicación", edit_publication_path(@publication), class: "btn btn-outline-secondary",style:"margin-top: 10px;" %>
+      <%= button_to "Eliminar", @publication, method: :delete, class: "btn btn-outline-secondary", style: "margin-top: 10px;" %>
+      <%end%>
+      <%= link_to "Volver", publications_path, class: "btn btn-outline-secondary", style:"margin-top: 10px;" %>
     </div>
     <hr>
     <br />
-    <h2>Cotiza</h2>
-    <p>Uno de nuestros ejecutivos se contactará usted </p>
+    <div class="titulo">
+      <h2>Cotiza!</h2>
+      <h3>Uno de nuestros ejecutivos se contactará usted </p>
+    </div>
     <%= render 'contacts/contact_form', contact: Contact.new(publication_id: @publication.id) %>
 
   </div>

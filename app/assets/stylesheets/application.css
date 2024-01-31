@@ -5,6 +5,7 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
+  background-color: #20264B;
   /* Se eliminará el ancho fijo para responsividad */
 }
 
@@ -72,19 +73,6 @@
 }
 
 
-/* Ajustes para el navbar con gradiente */
-.mi-navbar {
-  margin-bottom: 0;
-  background: linear-gradient(to bottom, #cccccc95, #56625f);
-  /* Resto de tus estilos del navbar */
-}
-
-/* Ajustes para el footer con gradiente */
-.custom-foot {
-  margin-bottom: 0;
-  background: linear-gradient(to bottom, #cccccc95, #56625f);
-  /* Resto de tus estilos del footer */
-}
 
 /* Overlay Oscuro */
 .background-image-overlay {
@@ -116,19 +104,22 @@
 
 .yeld{
   margin-top: 0; /* Elimina el margen superior */
-  background-color: #cccccc95;
+  background-color: #20264B;
+  color: white;
+  flex-grow: 1; /* Hace que el contenido crezca para ocupar el espacio restante */
+  min-height: 100vh; /* Altura mínima del contenido */
 }
 
 .mi-navbar{
 margin-bottom: 0;
-background: linear-gradient(to bottom, #56625f, #cccccc95);
+background: linear-gradient(to bottom, #2d3049, #20264B);
 
 }
 
 .custom-foot{
 
   margin-bottom: 0;
-  background: linear-gradient(to bottom, #cccccc95, #56625f);
+  background: linear-gradient(to top, #2d3049, #20264B);
 }
 
 .btn-contact {
@@ -140,6 +131,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px; /* Espacio superior para separar de otros elementos si es necesario */
+  
 }
 
 td, th {
@@ -156,4 +148,25 @@ td strong {
   flex-direction: row;
   gap: 10px;
 
+}
+.table-show{
+  background-color: #20264B;
+
+}
+h2{
+  color:white;
+
+
+}
+p{
+  color:white;
+}
+body{
+  color:white;
+}
+.titulo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

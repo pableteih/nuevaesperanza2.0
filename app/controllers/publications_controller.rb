@@ -6,6 +6,7 @@ class PublicationsController < ApplicationController
 
   # GET /publications or /publications.json
   def index
+
     @publications = Publication.all
     @pagy, @publications = pagy(Publication.order(created_at: :desc), items: 12)
   end
