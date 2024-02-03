@@ -36,6 +36,8 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.new(publication_params)
     @publication.user_id = current_user.id
+    @products = Product.all
+    @clients = Client.all.map { |client| ["#{client.name} #{client.lastName}", client.id] }
 
     respond_to do |format|
       if @publication.save
