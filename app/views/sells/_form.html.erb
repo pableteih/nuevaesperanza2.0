@@ -1,0 +1,43 @@
+<div class="container">
+  <%= form_with(model: sell) do |form| %>
+  <% if sell.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(sell.errors.count, "error") %> prohibited this sell from being saved:</h2>
+
+    <ul>
+      <% sell.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+<h1>Vende con nosotros!</h2>
+  <div class="mb-3">
+    <%= form.text_field :name, class: "form-control", placeholder: "Nombre", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :lastName, class: "form-control", placeholder: "Apellido", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :phone, class: "form-control", placeholder: "Teléfono", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :email, class: "form-control", placeholder: "Correo", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_area :content, class: "form-control", placeholder: "Contenido", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.collection_select :locality_id, Locality.all, :id, :name, { prompt: "Selecciona una localidad" }, class: "form-select", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Enviar", class: "btn btn-outline-secondary" %>
+  </div>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sells
   get 'terms/terminosycondiciones'
   get 'about/aboutus'
   resources :contacts, only: [:new, :create, :index, :show]

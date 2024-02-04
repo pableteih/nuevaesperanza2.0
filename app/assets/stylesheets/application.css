@@ -108,6 +108,7 @@
   color: white;
   flex-grow: 1; /* Hace que el contenido crezca para ocupar el espacio restante */
   min-height: 100vh; /* Altura mínima del contenido */
+  padding-top: 30;
 }
 
 .mi-navbar{
@@ -171,4 +172,11 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.steps{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:40px
 }

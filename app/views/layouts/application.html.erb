@@ -41,7 +41,10 @@
             <%= link_to "Clientes", clients_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
           </li>
           <li class="nav-item">
-            <%= link_to "Cotizaciones", contacts_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+            <%= link_to "Cotizaciones de compra", contacts_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Cotizaciones de ventas", sells_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
           </li>
           <%end%>
           <% if user_signed_in?%>
