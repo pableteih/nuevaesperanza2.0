@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container" style="overflow-x: auto;">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @sell %>
+  <%= render @sell %>
 
-<div>
-  <%= link_to "Edit this sell", edit_sell_path(@sell) %> |
-  <%= link_to "Back to sells", sells_path %>
+  <div>
+    <%= link_to "Editar", edit_sell_path(@sell), class: "btn btn-outline-secondary", style:"margin-left:20px;"  %>
+    <%= link_to "Volver", sells_path , class: "btn btn-outline-secondary", style:"margin-left:20px;" %>
 
-  <%= button_to "Destroy this sell", @sell, method: :delete %>
+    <%= button_to "Eliminar", @sell, method: :delete, class: "btn btn-outline-secondary", style:"margin-top:20px; margin-left:20px; margin-bottom:20px;" %>
+  </div>
 </div>

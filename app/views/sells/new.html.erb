@@ -1,45 +1,46 @@
-<div class="container">
+<div class="container fluid">
   <div class="steps">
     <div class="card text-bg-light mb-3" style="max-width: 80rem;">
-      <h3><div class="card-header">Te ayudamos a vender tus productos en simples pasos</div></h2>
+      <h3 class="card-header">Te ayudamos a vender tus productos</h3>
       <div class="card-body">
-        <p class="card-text">
-          <ul>
-            <li>Contacto Inicial:</li>
-            <p style="color:black;">Nos comunicamos para conocer tus productos y necesidades.</p>
-            <li>Evaluación de Productos:</li>
-            <p style="color:black;">Revisamos la información y calidad de tus productos para asegurar una buena adecuación a nuestra
-              plataforma.
-            </p>
-            <li>Acuerdo de Colaboración:</li>
-            <p style="color:black;">Establecemos los términos de colaboración, incluyendo detalles sobre la presentación de productos,
-              tarifas (si
-              las hay), y cualquier otro aspecto relevante.</p>
-            <li>Creación de Perfil:</li>
-            <p style="color:black;">Creamos un perfil destacado para tus productos en nuestra plataforma, destacando sus características y
-              beneficios.</p>
-            <li>Promoción:</li>
-            <p style="color:black;">Iniciamos la promoción activa de tus productos a través de estrategias específicas para maximizar la
-              visibilidad.
-            </p>
-            <li>Gestión de Ventas:</li>
-            <p style="color:black;">Facilitamos el contacto directo entre compradores interesados y tu empresa para gestionar las ventas de
-              forma
-              personalizada.</p>
-            <li>Seguimiento y Actualización:</li>
-            <p style="color:black;">Mantenemos una comunicación continua, actualizando información y ajustando estrategias según sea
-              necesario para
-              optimizar la visibilidad y ventas.</p>
+        <ul>
+          <li>Contacto Inicial:</li>
+          <p style="color:black;">Nos comunicamos para conocer tus productos y necesidades.</p>
+              <li>Evaluación de Productos:</li>
+              <p style="color:black;">Revisamos la información y calidad de tus productos para asegurar una buena
+                adecuación a nuestra
+                plataforma.
+              </p>
+              <li>Acuerdo de Colaboración:</li>
+              <p style="color:black;">Establecemos los términos de colaboración, incluyendo detalles sobre la
+                presentación de productos,
+                tarifas (si
+                las hay), y cualquier otro aspecto relevante.</p>
+              <li>Creación de Perfil:</li>
+              <p style="color:black;">Creamos un perfil destacado para tus productos en nuestra plataforma</p>
+              <li>Promoción:</li>
+              <p style="color:black;">Iniciamos la promoción activa de tus productos a través de estrategias específicas
+                para maximizar la
+                visibilidad.
+              </p>
+              <li>Gestión de Ventas:</li>
+              <p style="color:black;">Facilitamos el contacto entre compradores interesados y tu empresa para gestionar
+                las ventas de
+                forma personalizada.</p>
+              <li>Seguimiento y Actualización:</li>
+              <p style="color:black;">Mantenemos una comunicación continua, actualizando información y ajustando
+                estrategias según sea
+                necesario para optimizar la visibilidad y ventas.</p>
 
-          </ul>
-        </p>
+            </ul>
       </div>
     </div>
-
-    <%= render "form", sell: @sell %>
+    <div class="row" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top:60px;">
+      <div class="col-xs-12 col-md-6">
+        <!-- Contenido de render -->
+        <%= render "form", sell: @sell %>
+      </div>
+    </div>
     <br>
-  </div>
-  <div>
-    <%= link_to "Volver", publications_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>

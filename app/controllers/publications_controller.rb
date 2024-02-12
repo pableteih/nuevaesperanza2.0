@@ -8,7 +8,7 @@ class PublicationsController < ApplicationController
   def index
 
     @publications = Publication.all
-    @pagy, @publications = pagy(Publication.order(created_at: :desc), items: 12)
+    @pagy, @publications = pagy(Publication.order(created_at: :desc), items: 3)
   end
 
   # GET /publications/1 or /publications/1.json

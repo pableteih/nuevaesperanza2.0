@@ -10,6 +10,7 @@
         <th>Teléfono</th>
         <th>Correo</th>
         <th>Localidad</th>
+        <th>Vista</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +23,7 @@
         <td><%= client.email %></td>
         <td><%= client.locality.name %></td>
 
-        <td><%= link_to "Ver", client %></td>
+        <td><%= link_to "Ver", client, class: "btn btn-outline-secondary" %></td>
       </tr>
 
       <% end %>

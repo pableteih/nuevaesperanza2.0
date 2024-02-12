@@ -3,7 +3,12 @@
 
   <div class="mb-3">
     <%= form.label :Nombre, class: "form-label" %>
-    <%= form.text_field :name, class: "form-control", placeholder: "Nombre completo", required: true %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Nombre", required: true %>
+  </div>
+
+    <div class="mb-3">
+    <%= form.label :lastName, class: "form-label" %>
+    <%= form.text_field :lastName, class: "form-control", placeholder: "Apellido", required: true %>
   </div>
 
   <div class="mb-3">

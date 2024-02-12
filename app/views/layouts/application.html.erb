@@ -3,27 +3,26 @@
 
 <head>
   <title>Nueva esperanza app</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
 
 <body class="body">
   <nav class="navbar navbar-expand-lg bg-body-tertiary mi-navbar">
     <div class="container-fluid">
-      <a class="navbar-brand"> <%= image_tag "logoblanco.png", style: "width: 250px;" %></a>
+      <%= link_to(image_tag("logoblanco.png", style: "width: 250px;"), publications_path, class: "navbar-brand") %>
+      <%= link_to "whatsapp://send?phone=56976345068", class: "btn btn-link btn-floating btn-lg text-white m-1", role: "button", target: "_blank", style: "font-family: 'Roboto', sans-serif;" do %>
+      <i class="fab fa-whatsapp fa-3x" style="padding-right:30px;"></i>
+      <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,86 +30,66 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <%= link_to "Mercado", publications_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;" %>
+            <%= link_to "Mercado", publications_path, class:"nav-link active text-white" %>
           </li>
-          <%if user_signed_in? && current_user.role == "admin"%>
+          <% if user_signed_in? && current_user.role == "admin" %>
           <li class="nav-item">
-            <%= link_to "Productos", products_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Clientes", clients_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+            <%= link_to "Productos", products_path, class:"nav-link active text-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Compra", contacts_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+            <%= link_to "Clientes", clients_path, class:"nav-link active text-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Ventas", sells_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+            <%= link_to "Compra", contacts_path, class:"nav-link active text-white" %>
           </li>
-          <%end%>
-          <% if user_signed_in?%>
           <li class="nav-item">
-            <%= link_to "Cerrar sesión", destroy_user_session_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+            <%= link_to "Ventas", sells_path, class:"nav-link active text-white" %>
+          </li>
+          <% end %>
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Cerrar sesión", destroy_user_session_path, class:"nav-link active text-white" %>
           </li>
           <% else %>
           <li class="nav-item">
-            <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link active", style:"color:aliceblue;font-size: x-large;"  %>
+            <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link active text-white" %>
           </li>
-          <%end%>
+          <% end %>
         </ul>
       </div>
     </div>
-    <%= link_to "Enviar mensaje de WhatsApp", "whatsapp://send?phone=56976345068", target: "_blank" %>
   </nav>
+
   <div class="yeld">
     <%= yield %>
   </div>
 
   <footer class="text-center text-white" style="background-color: #20264B;">
-    <!-- Grid container -->
     <div class="container pt-4">
-      <!-- Section: Social media -->
       <section class="mb-4">
-        <!-- Facebook -->
-        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-          data-mdb-ripple-color="white"><i class="fab fa-facebook-f"></i></a>
-
-        <!-- Twitter -->
-        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-          data-mdb-ripple-color="white"><i class="fab fa-twitter"></i></a>
-
-        <!-- Google -->
-        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-          data-mdb-ripple-color="white"><i class="fab fa-google"></i></a>
-
-        <!-- Instagram -->
-        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-          data-mdb-ripple-color="white"><i class="fab fa-instagram"></i></a>
-
-        <!-- Linkedin -->
-        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-          data-mdb-ripple-color="white"><i class="fab fa-linkedin"></i></a>
-        <!-- Github -->
-        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"
-          data-mdb-ripple-color="white"><i class="fab fa-github"></i></a>
+        <!-- Redes sociales -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"><i
+            class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"><i
+            class="fab fa-twitter"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"><i
+            class="fab fa-whatsapp"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"><i
+            class="fab fa-instagram"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="#!" role="button"><i
+            class="fab fa-linkedin"></i></a>
       </section>
-      <!-- Section: Social media -->
     </div>
-    <!-- Grid container -->
 
-    <!-- Copyright -->
     <div class="text-bottom text-white p-3 custom-foot" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2023 Derechos reservados: <%= image_tag "logoblanco.png", style: "width: 150px;" %>
-
-      <p><%= link_to "Terminos y Condiciones", terms_terminosycondiciones_path%></p>
-
+      <p><%= link_to "Terminos y Condiciones", terms_terminosycondiciones_path %></p>
     </div>
-    <!-- Copyright -->
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
   </script>
-
 </body>
 
 </html>

@@ -61,11 +61,11 @@
           </tr>
         </table>
         <p>
-          <%= link_to "Ver producto", publication, class: "btn btn-outline-secondary" %>
+          <%= link_to "Ver producto", publication, class: "btn btn-outline-secondary", style:"margin-top:10px;"%>
         </p>
       </div>
     </div>
     <% end %>
   </div>
-  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  <%== pagy_nav(@pagy) %>
 </div>

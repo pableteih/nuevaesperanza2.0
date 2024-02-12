@@ -82,3 +82,5 @@ gem "pagy"
 gem "ransack"
 
 gem "pg_search"
+
+gem "font-awesome-sass", "~> 6.5.1"

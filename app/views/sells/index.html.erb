@@ -1,14 +1,34 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Sells</h1>
+<div class="container">
+<h1>Cotizaciones de venta</h1>
 
-<div id="sells">
-  <% @sells.each do |sell| %>
-    <%= render sell %>
-    <p>
-      <%= link_to "Show this sell", sell %>
-    </p>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Localidad</th>
+        <th>Contenido</th>
+        <th>Vista</th>
+      </tr>
+    <tbody>
+      <tr>
+      <% @sells.order(created_at: :desc).each do |sell| %>
+        <td><%= sell.name %></td>
+        <td><%= sell.lastName %></td>
+        <td><%= sell.created_at %></td>        
+        <td><%= sell.phone %></td>
+        <td><%= sell.email %></td>
+        <td><%= sell.locality.name %></td>
+        <td><%= sell.content %></td>
+        <td><%= link_to "Ver", sell, class: "btn btn-outline-secondary" %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New sell", new_sell_path %>

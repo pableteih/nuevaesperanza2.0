@@ -48,7 +48,8 @@ comunas = [
   "Chaitén",
   "Futaleufú",
   "Hualaihué",
-  "Palena"
+  "Palena",
+  "Otro"
 ]
 
 comunas.each do |comunas|
@@ -56,4 +57,5 @@ comunas.each do |comunas|
 end
 
 User.create(email: "admin@gmail.com", password: "123456", name: "Pablo", surname: "Igor", role: 1)
+User.create(email: "cristian@gmail.com", password: "123456", name: "Cristian", surname: "Puschel", role: 0)
 User.create(email: "pablo@gmail.com", password: "123456", name: "pablete", surname: "Igors", role: 0)

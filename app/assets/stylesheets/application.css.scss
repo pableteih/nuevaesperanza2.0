@@ -1,3 +1,6 @@
+/* font-awesome intall*/
+@import "font-awesome";
+
 /* ... tus otros estilos ... */
 
 /* Mejoras en .publication-card para responsividad */
@@ -109,12 +112,12 @@
   flex-grow: 1; /* Hace que el contenido crezca para ocupar el espacio restante */
   min-height: 100vh; /* Altura mínima del contenido */
   padding-top: 30;
+  overflow-x: auto;
 }
 
 .mi-navbar{
 margin-bottom: 0;
 background: linear-gradient(to bottom, #2d3049, #20264B);
-
 }
 
 .custom-foot{
@@ -165,18 +168,33 @@ p{
 body{
   color:white;
   font-family: 'Roboto', sans-serif;
+  overflow-x: auto;
 
 }
+
 .titulo{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
-.steps{
+.nav-item{
+  
+  font-size: xx-large;
+
+}
+
+.icon{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap:40px
+  color:white;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: auto;
+
+
 }
+
+

@@ -1,16 +1,18 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
   <div id="contacts">
-    <h1>Contizaciones</h1>
+    <h1>Cotizaciones</h1>
     <table class="table">
       <thead>
         <tr>
           <th>Nombre</th>
+          <th>Fecha</th>
           <th>Teléfono</th>
           <th>Correo</th>
           <th>Contenido</th>
           <th>Localidad</th>
           <th>Publicación</th>
+          <th>Vista</th>
 
         </tr>
       </thead>
@@ -19,6 +21,7 @@
 
         <tr>
           <td><%= "#{contact.name} #{contact.lastName}" if contact.name && contact.lastName %></td>
+          <td><%= contact.created_at %></td>
           <td><%= contact.phone %></td>
           <td><%= contact.email %></td>
           <td><%= contact.content %></td>
@@ -26,7 +29,7 @@
           <td><%= contact.publication.id %></td>
           
 
-          <td><%= link_to "Ver", contact %></td>
+          <td><%= link_to "Ver", contact, class: "btn btn-outline-secondary" %></td>
         </tr>
 
         <% end %>
@@ -34,6 +37,3 @@
     </table>
   </div>
 </div>
-
-
-<%= link_to "Crear contacto", new_contact_path, class: "btn btn-outline-secondary", style: "margin-left: 20px; margin-bottom: 20px;" %>
