@@ -26,9 +26,7 @@
           <td><%= contact.email %></td>
           <td><%= contact.content %></td>
           <td><%= contact.locality.name %></td>
-          <td><%= contact.publication.id %></td>
-          
-
+          <td><%= contact.publication.id %></td>       
           <td><%= link_to "Ver", contact, class: "btn btn-outline-secondary" %></td>
         </tr>
 
@@ -36,4 +34,5 @@
       </tbody>
     </table>
   </div>
+  <%= link_to "Exportar", export_contacts_path(format: :csv), class: "btn btn-outline-secondary" %>
 </div>

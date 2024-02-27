@@ -1,6 +1,16 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[show edit update destroy]
   before_action :authenticate_admin, only: %i[index show edit destroy update]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+
+
+  def export
+    contacts = Contact.all
+    respond_to do |format|
+      format.csv {send_data contacts.to_csv, filename: "contacts-#{Date.today}.csv"}
+    end
+  
+  end
 
   # GET /contacts or /contacts.json
   def index
@@ -65,7 +75,9 @@ class ContactsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_contact
-    @contact = Contact.find(params[:id])
+    if params[:id] != "export_data"
+      @contact = Contact.find(params[:id])
+    end
   end
 
   # Only allow a list of trusted parameters through.
